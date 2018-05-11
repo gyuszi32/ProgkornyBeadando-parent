@@ -10,7 +10,15 @@
    <children>
       <StackPane layoutX="150.0" layoutY="34.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Label prefHeight="100.0" prefWidth="300.0" text="A játék célja az, hogy a 2-es számból előállítjuk a 2048-t, úgy hogy csak azonos számokat adhatunk össze. Azonos számot csak azonos számmal húzhatsz össze." textAlignment="CENTER" textFill="#00aaff" wrapText="true" />
+            <StackPane>
+               <children>
+                  <Label text="2048" textFill="RED" underline="true">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
          </children>
       </StackPane>
       <StackPane layoutX="246.0" layoutY="297.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="250.0">
@@ -18,28 +26,6 @@
             <Button mnemonicParsing="false" onAction="#vissza" text="Vissza" />
          </children>
       </StackPane>
-      <StackPane layoutX="150.0" layoutY="175.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
-         <children>
-            <Label prefHeight="100.0" prefWidth="300.0" text="A játék célja az, megpróbáljuk a logikánkat használva kiszámolni, hogy a 64 mező melyikén található bomba. Vigyázat: 10 bombát rejtettünk el a mezőkön. Sok sikert hozzá!" textAlignment="CENTER" textFill="#00aaff" wrapText="true" />
-         </children>
-      </StackPane>
-      <StackPane layoutX="242.0" layoutY="148.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
-         <children>
-            <Label text="Aknakereső" textFill="RED" underline="true">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane layoutX="273.0" layoutY="21.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label text="2048" textFill="RED" underline="true">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
+      <Label layoutX="150.0" layoutY="150.0" prefHeight="100.0" prefWidth="300.0" text="A játék célja az, hogy a 2-es számból előállítjuk a 2048-t, úgy hogy csak azonos számokat adhatunk össze. Azonos számot csak azonos számmal húzhatsz össze." textAlignment="CENTER" textFill="#00aaff" wrapText="true" />
    </children>
 </AnchorPane>
