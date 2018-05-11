@@ -83,9 +83,9 @@
     <reporting>
         <plugins>
             <plugin>
-                <groupId>org.openclover</groupId>
-                <artifactId>clover-maven-plugin</artifactId>
-                <version>4.2.1</version>
+                <groupId>org.jacoco</groupId> 
+                <artifactId>jacoco-maven-plugin</artifactId> 
+                <version>0.8.1</version> 
                 <configuration>
                     <generatePdf>true</generatePdf>
                     <generateXml>true</generateXml>

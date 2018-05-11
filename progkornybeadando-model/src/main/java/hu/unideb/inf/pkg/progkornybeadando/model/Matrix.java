@@ -1,20 +1,71 @@
 package hu.unideb.inf.pkg.progkornybeadando.model;
 
+/*-
+ * #%L
+ * progkornybeadando-model
+ * %%
+ * Copyright (C) 2018 Debreceni Egyetem, Informatika Kar
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 1 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-1.0.html>.
+ * #L%
+ */
+
+
 import java.util.ArrayList;
 import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * 
+ * A mátrixok reprezentálására szolgáló osztály. 
+ */
 public class Matrix {
+    /**
+     * A {@link Matrix} osztály konstruktora.
+     **/
+    public Matrix() {
+    }
+    
     private static final Logger logom = LoggerFactory.getLogger(Matrix.class);
-     
+    
+     /**
+      * Visszaad egy matrixot a {@link Matrix} osztályból 2 darab
+      * tetszőleges értékkel.      
+      * 
+     * @param n egy természetes szám
+     * @param m egy természetes szám
+     * @return Visszaad egy kezdőmátrixot.
+      */
     public static int[][] kezdoMatrix(int n, int m) {
         int[][] aktualisMatrix = new int[n][m];
         add(aktualisMatrix);
         add(aktualisMatrix);
             return aktualisMatrix ;
     }
-    
+    /** 
+     * A <code>aktualisMatrix</code> nulla elemei közül, egy
+     * tetszőleges nulla érték helyére egy 2-es vagy 4-es érték
+     * kerül.
+     * <p>Ha az oszlop és a sor indexe újból tetszőlegesen ki lett
+     * választva, akkor addig választ ki tetszőleges számokat, amíg
+     * nem lesz az egyik különböző.
+     * </p>
+     * 
+     * 
+     * @param aktualisMatrix egy egész számokat tartalmazó mátrix
+     **/
     public static void add(int aktualisMatrix[][]){
         int nullak = 0;
         ArrayList<Number> indexsor = new ArrayList<>();
@@ -44,7 +95,15 @@ public class Matrix {
             logom.warn("Betelt a mátrix!");
         }
     };
-    
+    /**
+     *A <code>aktualisMatrix</code> nem nulla elemei egyesével 
+     * a sorok végére kerülnek, míg az egész számok
+     * a sor elejére kerülnek.
+     *
+     *
+     *
+     * @param aktualisMatrix egy egész számokat tartalmazó mátrix
+     **/
     public static void bejaras(int aktualisMatrix[][]){
         for(int k=aktualisMatrix.length-1;k>=0;k--){
             for(int l=aktualisMatrix.length-1;l>=0;l--){
@@ -55,7 +114,18 @@ public class Matrix {
             }
         }
     }
-    
+    /** 
+     * A <code>aktualisMatrix</code>-ban az egymás mellett lévő
+     * azonos elemeket összeadja.
+     * <p>
+     * Az összeadás során a kisebb sorindexű elem helyére kerül
+     * az összeg, míg a másik indexű elem értéke kinullázódik
+     * </p>
+     *
+     *
+     *
+     * @param aktualisMatrix egy egész számokat tartalmazó mátrix
+     **/
     public static void osszead(int aktualisMatrix[][]){
         for (int[] aktualisMatrix1 : aktualisMatrix) {
             for (int l = 0; l<aktualisMatrix.length; l++) {
@@ -67,7 +137,16 @@ public class Matrix {
         }
     }
     
-   
+   /**
+    * A <code>aktualisMatrix</code>-on a matematikai transzponáció
+    * hajtódik végre.
+    * <p>
+    * Azaz, a mátrix transzponálása során, sorainak és oszlopainak
+    * a felcserélése történik. </p>
+    * 
+    * 
+    *@param aktualisMatrix egy egész számokat tartalmazó mátrix
+    **/
     private static void transzponalt(int aktualisMatrix[][] ) {
         for(int i = 0; i < aktualisMatrix.length; i++){
             for(int j = i+1; j < aktualisMatrix.length ; j++){
@@ -77,7 +156,14 @@ public class Matrix {
             }
         }
     }
-
+    /**
+     *A <code>aktualisMatrix</code>-t középen elforgatjuk.
+     *<p>
+     * Azaz a mátrix sorait egyenlően szétosztja,
+     * és az azonos távolságban lévő elemeit felcseréli.</p>
+     * 
+     * @param aktualisMatrix egy egész számokat tartalmazó mátrix
+     **/
     private static void kozepforgat(int aktualisMatrix[][]) {
         int hossz = aktualisMatrix.length ;
         for(int i = 0; i < hossz/2; i++){
@@ -88,7 +174,12 @@ public class Matrix {
             }
         }
     }
-
+    /**
+     *A <code>aktualisMatrix</code>-on matematikai forgatást végez.
+     *
+     *
+     * @param aktualisMatrix egy egész számokat tartalmazó mátrix
+     **/
     public static void forgatas(int aktualisMatrix[][] ){
         if(aktualisMatrix == null)
             return;

@@ -1,20 +1,78 @@
 package hu.unideb.inf.pkg.progkornybeadando.model;
 
+/*-
+ * #%L
+ * progkornybeadando-model
+ * %%
+ * Copyright (C) 2018 Debreceni Egyetem, Informatika Kar
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 1 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-1.0.html>.
+ * #L%
+ */
+
+
 
 import static hu.unideb.inf.pkg.progkornybeadando.model.Matrix.add;
 import static hu.unideb.inf.pkg.progkornybeadando.model.Matrix.bejaras;
 import static hu.unideb.inf.pkg.progkornybeadando.model.Matrix.osszead;
 import static hu.unideb.inf.pkg.progkornybeadando.model.Matrix.forgatas;
 
-
+/**
+ * 
+ * A 2048 műveleteit reprezentáló osztály.
+ */
 public class Operation_2048 {
+
+    /**
+     *A {@code Operaiton_2048} osztály konstruktora.
+     **/
+    public Operation_2048() {
+    }
     
-    
+    /**
+     *
+     *
+     **/
     public static boolean vege1=false;
+     /**
+     *
+     *
+     **/
     public static boolean vege2=false;
+     /**
+     *
+     *
+     **/
     public static boolean vege3=false;
+     /**
+     *
+     *
+     **/
     public static boolean vege4=false;
     
+    /**
+     * A metódus a <code>aktualisMatrix</code> elemeinek
+     * összeadására szolgál.
+     * <p>
+     * Az összeadás során a bal oldalra kerülnek a
+     * mátrixban az értékes elemek.
+     * </p>
+     *
+     * 
+     * @param aktualisMatrix egész számokat tartalmazó mátrix
+     **/
     public static void balra(int aktualisMatrix[][]){
         bejaras(aktualisMatrix);
         bejaras(aktualisMatrix);
@@ -25,6 +83,18 @@ public class Operation_2048 {
         bejaras(aktualisMatrix);
         
     }
+        /**
+     * A metódus a <code>aktualisMatrix</code> elemeit
+     * összeadja, majd egy új nem nulla elemet ad hozzá.
+     * 
+     * <p>
+     * Az összeadás során a bal oldalra kerülnek a
+     * mátrixban az értékes elemek.
+     * </p>
+     *
+     * 
+     * @param aktualisMatrix egész számokat tartalmazó mátrix
+     **/
     public static void balrahiv(int aktualisMatrix[][]){
         int[][] seged = new int[aktualisMatrix.length][];
         for(int i = 0; i < aktualisMatrix.length; i++){
@@ -50,6 +120,18 @@ public class Operation_2048 {
             vege4=false;        
         }
 }
+     /**
+     * A metódus a <code>aktualisMatrix</code> elemeit
+     * összeadja, majd egy új nem nulla elemet ad hozzá.
+     * 
+     * <p>
+     * Az összeadás során a jobb oldalra kerülnek a
+     * mátrixban az értékes elemek.
+     * </p>
+     *
+     * 
+     * @param aktualisMatrix egész számokat tartalmazó mátrix
+     **/
     public static void jobbrahiv(int aktualisMatrix[][]){
         int[][] seged = new int[aktualisMatrix.length][];
         for(int i = 0; i < aktualisMatrix.length; i++){
@@ -79,6 +161,17 @@ public class Operation_2048 {
             vege4=false;
         }
     }
+     /**
+     * A metódus a <code>aktualisMatrix</code> elemeit
+     * összeadja, majd egy új nem nulla elemet ad hozzá.
+     * 
+     * <p>
+     * Az összeadás során az elemek a alsó üres sorokba kerülnek. 
+     * </p>
+     *
+     * 
+     * @param aktualisMatrix egész számokat tartalmazó mátrix
+     */
     public static void lehiv(int aktualisMatrix[][]){
         int[][] seged = new int[aktualisMatrix.length][];
         for(int i = 0; i < aktualisMatrix.length; i++){
@@ -108,6 +201,17 @@ public class Operation_2048 {
             vege4=false;
         }
     }
+         /**
+     * A metódus a <code>aktualisMatrix</code> elemeit
+     * összeadja, majd egy új nem nulla elemet ad hozzá.
+     * 
+     * <p>
+     * Az összeadás során az elemek a felső üres sorokba kerülnek. 
+     * </p>
+     *
+     * 
+     * @param aktualisMatrix egész számokat tartalmazó mátrix
+     */
     public static void felhiv(int aktualisMatrix[][]){
         int[][] seged = new int[aktualisMatrix.length][];
         for(int i = 0; i < aktualisMatrix.length; i++){
