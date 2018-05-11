@@ -29,29 +29,44 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
 
 
 /**
- *
- * @author Juhász Gyula
+ *A {@link loginUserBuilderImpl} osztály tartalmazza a bejelentkezés
+ * során létrejövő adatok lekérdezéseit és beállításait.
  */
 public class loginUserBuilderImpl implements loginUserBuilder{
     
     private loginUser userke;
-
+    /**
+     *Az {@link loginUserBuilder} konstruktora.
+     */
     public loginUserBuilderImpl() {
         userke = new loginUser();
     }
-    
+     /**
+     *A metódus segítségével be tudjuk állítani a bejelentkezéshez
+     * szükséges felhasználói nevet.
+     * @param loguser bejelentkezéshez szükséges név
+     * @return Visszaad egy loginUserBuilder objektumot
+     */
     @Override
     public loginUserBuilder setLogUser(String loguser) {
         userke.setLogUser(loguser);
         return this;        
     }
-
+    /**
+     *A metódus segítségével be tudjuk majd állítani a bejelentkezéshez
+     * szükséges jelszót.
+     * @param logpassword bejelentkezéshez szükséges jelszó
+     * @return Visszaad egy loginUserBuilder objektumot
+     */
     @Override
     public loginUserBuilder setLogPassword(String logpassword) {
         userke.setLogPassword(logpassword);
         return this;
     }
-
+    /**
+     *A loginUserBuilder végrehajtásáért felelős metódus.
+     *@return Visszaad egy loginUser objektumot.
+     */
     @Override
     public loginUser build() {
         return userke;

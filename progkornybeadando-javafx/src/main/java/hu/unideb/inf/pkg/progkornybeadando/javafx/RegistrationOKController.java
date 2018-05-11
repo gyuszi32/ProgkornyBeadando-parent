@@ -38,7 +38,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ *A {@link RegistrationOKController} felelős a sikeres regisztráció
+ * végrehajtása után létrejövő új ablaknak.
+ */
 public class RegistrationOKController implements Initializable {
     @FXML
     private void bejelentkezes(ActionEvent event){

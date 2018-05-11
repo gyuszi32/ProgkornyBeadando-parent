@@ -42,28 +42,48 @@ public class Operation_2048 {
     }
     
     /**
-     *
-     *
+     *A <code>vege1</code> változó az baloldali
+     * mozgás lehetőségét jelzi.
+     * <p>
+     * Ha lehetséges baloldali összeadás a játék során,
+     * akkor hamis értéket kap, ellenkező esetben
+     * igaz értéket kap.
+     * </p>
      **/
     public static boolean vege1=false;
-     /**
-     *
-     *
+    /**
+     *A <code>vege2</code> változó a jobboldali
+     * mozgás lehetőségét jelzi.
+     * <p>
+     * Ha lehetséges jobboldali összeadás a játék során,
+     * akkor hamis értéket kap, ellenkező esetben
+     * igaz értéket kap.
+     * </p>
      **/
     public static boolean vege2=false;
-     /**
-     *
-     *
+    /**
+     *A <code>vege3</code> változó a lefele
+     * mozgás lehetőségét jelzi.
+     * <p>
+     * Ha lehetséges lefelé összeadni a játék során,
+     * akkor hamis értéket kap, ellenkező esetben
+     * igaz értéket kap.
+     * </p>
      **/
     public static boolean vege3=false;
-     /**
-     *
-     *
+    /**
+     *A <code>vege4</code> változó a felfelé
+     * mozgás lehetőségét jelzi.
+     * <p>
+     * Ha lehetséges felfelé történő összeadás a játék során,
+     * akkor hamis értéket kap, ellenkező esetben
+     * igaz értéket kap.
+     * </p>
      **/
     public static boolean vege4=false;
     
     /**
-     * A metódus a <code>aktualisMatrix</code> elemeinek
+     * A metódus az <code>aktualisMatrix</code> elemeinek
      * összeadására szolgál.
      * <p>
      * Az összeadás során a bal oldalra kerülnek a
@@ -84,7 +104,7 @@ public class Operation_2048 {
         
     }
         /**
-     * A metódus a <code>aktualisMatrix</code> elemeit
+     * A metódus az <code>aktualisMatrix</code> elemeit
      * összeadja, majd egy új nem nulla elemet ad hozzá.
      * 
      * <p>
@@ -121,7 +141,7 @@ public class Operation_2048 {
         }
 }
      /**
-     * A metódus a <code>aktualisMatrix</code> elemeit
+     * A metódus az <code>aktualisMatrix</code> elemeit
      * összeadja, majd egy új nem nulla elemet ad hozzá.
      * 
      * <p>
@@ -162,7 +182,7 @@ public class Operation_2048 {
         }
     }
      /**
-     * A metódus a <code>aktualisMatrix</code> elemeit
+     * A metódus az <code>aktualisMatrix</code> elemeit
      * összeadja, majd egy új nem nulla elemet ad hozzá.
      * 
      * <p>
@@ -202,7 +222,7 @@ public class Operation_2048 {
         }
     }
          /**
-     * A metódus a <code>aktualisMatrix</code> elemeit
+     * A metódus az <code>aktualisMatrix</code> elemeit
      * összeadja, majd egy új nem nulla elemet ad hozzá.
      * 
      * <p>

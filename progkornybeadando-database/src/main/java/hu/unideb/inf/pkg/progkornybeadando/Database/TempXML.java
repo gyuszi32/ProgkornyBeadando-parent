@@ -53,42 +53,72 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Juh?sz Gyula
+ * A {@link TempXML} osztályban lévő metódusok, a bejelentkezés és a regisztáció során a 
+ * feldolgozástban játszanak fontos szerepet.
+ * <p>Az olvasást segítő metódusokon kívűl, fontos megemlíteni még, hogy ebben az osztályban
+ * található az a tempXML metódus, mely előállítja az adatbázis számára nélkülözhetetlen
+ * segéd XML-t.</p>
  */
 public class TempXML {
+    /**
+     *A TempXML osztály konstruktora.
+     */
     private TempXML() {
     }
-    private static TempXML xml;
     
-        public static TempXML getxml()
-    {
+    private static TempXML xml;
+    /**
+     *A {@link getxml} lekéri az egyetlen egy példányát a TempXML objektumnak.
+     * @return TempXML objektumot ad vissza.
+     */
+    public static TempXML getxml(){
         if(xml == null)
             xml = new TempXML();
         return xml;
     }
+    /**
+     *Az XML egyetlen egy példánya.
+     */
     public static TempXML xmlke=TempXML.getxml();
-    
-    public static regUser adat;
+    /**
+     *A regUser objektum egy példánya.
+     */    
+    public static regUser adat;    
     private boolean hibaVan=false;
     private boolean hibaVan2=false;
+    
     List<String> felhasznalo_nevek=new ArrayList<>();
     
-
+    /**
+     *A {@link setHibaVan} metódus beállítja a hibaVan változó értékét.
+     * @param hibaVan alapértelmezett értéke false
+     */
     public void setHibaVan(boolean hibaVan) {
         this.hibaVan = hibaVan;
     }
-    
+    /**
+     *A {@link isHibaVan} metódus lekéri a hibaVan változó értékét.
+     *@return Visszaadja a hibaVan változót.
+     */
     public boolean isHibaVan() {
         return hibaVan;
     }
-
+    /**
+     *A regisztációs adatokat tudjuk lekérdezni a {@link setAdat} metódus segítségével.
+     * @param adat regUser objektum
+     */
     public void setAdat(regUser adat) {
         this.adat = adat;
     }
     
-      
-    public void tempXML(){            
-          
+      /**
+       * A {@link tempXML} metódus készíti el a seged.xml dokumentumokat.
+       * <p>Az XML dokumentumokat csomópontok segítségével állítjuk elő,
+       * melyben minden egyes csomópont esetében megmondjuk, hogy milyen szerepet tölt be
+       * az XML dokumentumban. A segéd XML fájl fontos szerepet tölt be az adatbázis
+       * előállítása során.</p>
+       */
+    public void tempXML(){                      
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db= dbf.newDocumentBuilder();
@@ -141,9 +171,12 @@ public class TempXML {
         }
         
     }
-    
-    public void readXML(){
-       
+    /**
+     *A {@link readXML} metódus segítségével olvasunk ki felhasználókat a regisztráció
+     * során.
+     * <p>A felhasználó csomópont alapján olvassa ki az adatokat az XML dokumentumból.</p>
+     */
+    public void readXML(){       
         try {
             hibaVan=false;
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -158,9 +191,13 @@ public class TempXML {
         }
         
     }
-    
-    public void readLoginXML() throws ParserConfigurationException{
-
+    /**
+     *A {@link readLoginXML} metódus segítségével olvasunk ki felhasználókat
+     * az adatbázisból a bejelentkezés során.
+     * <p>
+     * A metódus a XML fájlt bejárja a megadott csomópontok segítségével.</p>
+     */
+    public void readLoginXML(){
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db= dbf.newDocumentBuilder();
@@ -170,7 +207,7 @@ public class TempXML {
             NodeList n1 = doc.getElementsByTagName("Jelszo");
             NodeList n2 = doc.getElementsByTagName("Felhasznalo");
             peldanyka.valid_log(n1,n2);
-        } catch (SAXException | IOException ex) {
+        } catch (SAXException | IOException | ParserConfigurationException ex) {
             Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
         }
         

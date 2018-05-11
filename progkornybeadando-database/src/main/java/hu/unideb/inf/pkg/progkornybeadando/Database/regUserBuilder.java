@@ -30,16 +30,51 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
 
 /**
  *
- * @author Juhász Gyula
+ * A {@link regUserBuilder} absztrakt interfész objektum létrehozásához.
  */
 public interface regUserBuilder {
+        /**
+     * A metódus a felhasználó nevének beállításáért felelős.
+     * @param userfield a felhasználó neve
+     * @return Visszaad egy regUserBuilder objektumot. 
+     */
     regUserBuilder setUserfield(final String userfield);
+        /**
+     * A metódus a felhasználó jelszavának beállításáért felelős.
+     * @param passwordfield a felhasználó jelszava
+     * @return Visszaad egy regUserBuilder objektumot. 
+     */
     regUserBuilder setPasswordfield(final String passwordfield);
+        /**
+     * A metódus a felhasználó megerősítő jelszavának beállításáért felelős.
+     * @param passwordfield2 a felhasználó megerősítő jelszava
+     * @return Visszaad egy regUserBuilder objektumot. 
+     */
     regUserBuilder setPasswordfield2(final String passwordfield2);
+         /**
+     * A metódus a felhasználó egyetemi karának beállításáért felelős.
+     * @param karfield felhasználó egyetemi karja
+     * @return Visszaad egy regUserBuilder objektumot. 
+     */
     regUserBuilder setKarfield(final String karfield);
+         /**
+     * A metódus a felhasználó egyetemi szakjának beállításáért felelős.
+     * @param szakfield felhasználó egyetemi szakja
+     * @return Visszaad egy regUserBuilder objektumot. 
+     */
     regUserBuilder setSzakfield(final String szakfield);
+         /**
+     * A metódus a felhasználó évfolyamának beállításáért felelős.
+     * @param evfield felhasználó évfolyama
+     * @return Visszaad egy regUserBuilder objektumot. 
+     *
+     */
     regUserBuilder setEvfield(final String evfield);
     
+    /**
+     * A regUserBuilder végrehajtásáért felelős metódus.
+     *@return Visszaad egy regUser objektumot.
+     */
     regUser build();
 
 }

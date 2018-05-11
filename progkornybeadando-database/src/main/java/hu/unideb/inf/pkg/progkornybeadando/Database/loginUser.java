@@ -30,30 +30,48 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
 
 /**
  *
- * @author Juhász Gyula
+ * A bejelenkezéshez szükséges, a felhasználó adatait tartalmazó osztály.
+ * <p>Tartalmazza a felhasználó bejelentkezéshez beírt nevét és jelszavát.</p>
  */
 public class loginUser {
     private String logUser;
     private String logPassword;
-
+    /**
+     *A {@link loginUser} osztály konstruktora.
+     */
+    public loginUser() {
+    }
+    /**
+     *A belejelenkezési felhasználónevet adja vissza.
+     * @return Visszaadja a bejelentkezési felhasználónevet.
+     */
     public String getLogUser() {
         return logUser;
     }
-
+    /**
+     *A bejelentkezési felhasználónév állítható be a metódussal.
+     * 
+     * @param logUser bejelenkezési név
+     */
     public void setLogUser(String logUser) {
         this.logUser = logUser;
     }
-
+    /**
+     *A belejelenkezéshez szükséges jelszót adja vissza.
+     * @return Visszaadja a bejelentkezési jelszót. 
+     */
     public String getLogPassword() {
         return logPassword;
     }
-
+    /**
+     *A bejelentkezési jelszó állítható be a metódussal.
+     * 
+     * @param logPassword bejelenkezési jelszó
+     */
     public void setLogPassword(String logPassword) {
         this.logPassword = logPassword;
     }
 
-    public loginUser() {
-    }
     
     
 }

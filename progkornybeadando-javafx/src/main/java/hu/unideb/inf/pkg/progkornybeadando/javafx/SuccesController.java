@@ -40,7 +40,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.slf4j.LoggerFactory;
-
+/**
+ *A {@link SuccesController} felelős a menü grafikus felületéért.
+ */
 public class SuccesController implements Initializable {
 
     private static final org.slf4j.Logger logom = LoggerFactory.getLogger(SuccesController.class);

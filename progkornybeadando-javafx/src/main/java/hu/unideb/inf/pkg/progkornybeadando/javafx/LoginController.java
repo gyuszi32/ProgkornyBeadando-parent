@@ -47,7 +47,9 @@ import hu.unideb.inf.pkg.progkornybeadando.Database.loginUserBuilder;
 import hu.unideb.inf.pkg.progkornybeadando.Database.loginUserBuilderImpl;
 import javax.xml.parsers.ParserConfigurationException;
 import org.slf4j.LoggerFactory;
-
+/**
+ * A {@link LoginController} felelős a bejelentkezésért.
+ */
 public class LoginController implements Initializable {
     @FXML
     private TextField USER;
@@ -87,33 +89,29 @@ public class LoginController implements Initializable {
        
        
         
-        try {
-            valid.setLogadatok(construct());
-            xmlke.readLoginXML();
-            if(valid.isHibaVan2()==false){
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/succes.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage stage= new Stage(StageStyle.DECORATED);
-                    stage.setScene(scene);
-                    URL vmi = this.getClass().getResource("/styles/Styles.css");
-                    String css=vmi.toExternalForm();
-                    scene.getStylesheets().add(css);
-                    stage.setTitle("Gratulálunk!");
-                    stage.setResizable(false);
-                    stage.show();
-                    ((Node)(event.getSource())).getScene().getWindow().hide();
-                    logom.info("Sikeres bejelentkezés!");
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }else{
-                hiba2.setVisible(true);
-                logom.warn("Nincs ilyen felhasználó, vagy nem érvényes jelszó!");
-                valid.setHibaVan2(false);
+        valid.setLogadatok(construct());
+        xmlke.readLoginXML();
+        if(valid.isHibaVan2()==false){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/succes.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage= new Stage(StageStyle.DECORATED);
+                stage.setScene(scene);
+                URL vmi = this.getClass().getResource("/styles/Styles.css");
+                String css=vmi.toExternalForm();
+                scene.getStylesheets().add(css);
+                stage.setTitle("Gratulálunk!");
+                stage.setResizable(false);
+                stage.show();
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+                logom.info("Sikeres bejelentkezés!");
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }else{
+            hiba2.setVisible(true);
+            logom.warn("Nincs ilyen felhasználó, vagy nem érvényes jelszó!");
+            valid.setHibaVan2(false);
         }
              
     }

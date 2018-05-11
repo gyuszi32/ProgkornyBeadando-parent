@@ -38,7 +38,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
+/**
+ *A {@link StartController} felelős a játék első ablakának
+ * beállításáért.
+ */
 public class StartController implements Initializable {
     
     

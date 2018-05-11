@@ -30,11 +30,26 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
 
 /**
  *
- * @author Juhász Gyula
+ * A {@link loginUserBuilder} absztrakt interfész objektum létrehozásához.
  */
 public interface loginUserBuilder {
+    /**
+     *A metódus segítségével be tudjuk majd állítani a bejelentkezéshez
+     * szükséges felhasználói nevet.
+     * @param loguser bejelentkezéshez szükséges név
+     * @return Visszaad egy loginUserBuilder objektumot
+     */
     loginUserBuilder setLogUser(final String loguser);
+        /**
+     *A metódus segítségével be tudjuk majd állítani a bejelentkezéshez
+     * szükséges jelszót.
+     * @param logpassword bejelentkezéshez szükséges jelszó
+     * @return Visszaad egy loginUserBuilder objektumot
+     */
     loginUserBuilder setLogPassword(final String logpassword);
-    
+        /**
+     *A loginUserBuilder végrehajtásáért felelős metódus.
+     *@return Visszaad egy loginUser objektumot.
+     */
     loginUser build();
 }

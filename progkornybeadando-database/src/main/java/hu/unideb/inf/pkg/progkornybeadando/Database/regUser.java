@@ -28,8 +28,11 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  */
 
 /**
- *
- * @author Juhász Gyula
+ *A regisztráció adatait tartalamazó osztály.
+ * <p>
+ * A {@link regUser} osztály tartalmazza többek között a 
+ * felhasználó felhasználónevét, a jelszavát, a megerősítő jelszavát,
+ * az egyetemi karát, az egyetemi szakját, és az évfolyamát.</p>
  */
 public class regUser {
     
@@ -39,61 +42,97 @@ public class regUser {
     private String karfield;
     private String szakfield;
     private String evfield;
-    
-    public regUser(){
-    
+    /**
+     *A {@link regUser} osztály konstruktora.
+     */
+    public regUser(){    
     }
 
     @Override
     public String toString() {
         return "alap{" + "userfield=" + userfield + ", passwordfield=" + passwordfield + ", passwordfield2=" + passwordfield2 + ", karfield=" + karfield + ", szakfield=" + szakfield + ", evfield=" + evfield + '}';
     }
-
+    /**
+     *A metódus a felhasználó nevét adja vissza.
+     * @return Visszaadja a felhasználó nevét.
+     */
     public String getUserfield() {
         return userfield;
     }
-
+    /**
+     * A metódus a felhasználó nevének beállításáért felelős.
+     * @param userfield a felhasználó neve 
+     */
     public void setUserfield(String userfield) {
         this.userfield = userfield;
     }
-
+   /**
+     *A metódus a felhasználó jelszavát adja vissza.
+     * @return Visszaadja a felhasználó jelszavát.
+     */
     public String getPasswordfield() {
-        return passwordfield;
-        
+        return passwordfield; 
     }
-
+    /**
+     * A metódus a felhasználó jelszavának beállításáért felelős.
+     * @param passwordfield a felhasználó jelszava 
+     */
     public void setPasswordfield(String passwordfield) {
         this.passwordfield = passwordfield;
     }
-
+       /**
+     *A metódus a felhasználó megerősítő jelszavát adja vissza.
+     * @return Visszaadja a felhasználó megerősítő jelszavát.
+     */
     public String getPasswordfield2() {
         return passwordfield2;
     }
-
+    /**
+     * A metódus a felhasználó megerősítő jelszavának beállításáért felelős.
+     * @param passwordfield2 a felhasználó megerősítő jelszava 
+     */
     public void setPasswordfield2(String passwordfield2) {
         this.passwordfield2 = passwordfield2;
     }
-
+   /**
+     *A metódus a felhasználó egyetemi karát adja vissza.
+     * @return Visszaadja a felhasználó egyetemi karát.
+     */
     public String getKarfield() {
         return karfield;
     }
-
+     /**
+     * A metódus a felhasználó egyetemi karának beállításáért felelős.
+     * @param karfield felhasználó egyetemi karja 
+     */
     public void setKarfield(String karfield) {
         this.karfield = karfield;
     }
-
+   /**
+     *A metódus a felhasználó egyetemi szakját adja vissza.
+     * @return Visszaadja a felhasználó egyetemi szakját.
+     */
     public String getSzakfield() {
         return szakfield;
     }
-
+     /**
+     * A metódus a felhasználó egyetemi szakjának beállításáért felelős.
+     * @param szakfield felhasználó egyetemi szakja 
+     */
     public void setSzakfield(String szakfield) {
         this.szakfield = szakfield;
     }
-
+   /**
+     *A metódus a felhasználó évfolyamát adja vissza.
+     * @return Visszaadja a felhasználó évfolyamát.
+     */
     public String getEvfield() {
         return evfield;
     }
-
+     /**
+     * A metódus a felhasználó évfolyamának beállításáért felelős.
+     * @param evfield felhasználó évfolyama 
+     */
     public void setEvfield(String evfield) {
         this.evfield = evfield;
     }

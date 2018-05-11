@@ -49,7 +49,10 @@ import static hu.unideb.inf.pkg.progkornybeadando.model.Operation_2048.vege2;
 import static hu.unideb.inf.pkg.progkornybeadando.model.Operation_2048.vege3;
 import static hu.unideb.inf.pkg.progkornybeadando.model.Operation_2048.vege4;
 import javafx.stage.StageStyle;
-
+/**
+ *A {@link GameController} felelős a játék grafikus részének
+ * a beállításaiért.
+ **/
 public class GameController implements Initializable {
 
     @FXML

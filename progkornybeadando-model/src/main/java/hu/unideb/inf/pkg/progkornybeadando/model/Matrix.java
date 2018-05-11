@@ -44,8 +44,8 @@ public class Matrix {
       * Visszaad egy matrixot a {@link Matrix} osztályból 2 darab
       * tetszőleges értékkel.      
       * 
-     * @param n egy természetes szám
-     * @param m egy természetes szám
+     * @param n a mátrix sorainak száma
+     * @param m a mátrix oszlopainak száma
      * @return Visszaad egy kezdőmátrixot.
       */
     public static int[][] kezdoMatrix(int n, int m) {
@@ -55,7 +55,7 @@ public class Matrix {
             return aktualisMatrix ;
     }
     /** 
-     * A <code>aktualisMatrix</code> nulla elemei közül, egy
+     * Az <code>aktualisMatrix</code> nulla elemei közül, egy
      * tetszőleges nulla érték helyére egy 2-es vagy 4-es érték
      * kerül.
      * <p>Ha az oszlop és a sor indexe újból tetszőlegesen ki lett
@@ -96,7 +96,7 @@ public class Matrix {
         }
     };
     /**
-     *A <code>aktualisMatrix</code> nem nulla elemei egyesével 
+     *Az <code>aktualisMatrix</code> nem nulla elemei egyesével 
      * a sorok végére kerülnek, míg az egész számok
      * a sor elejére kerülnek.
      *
@@ -115,7 +115,7 @@ public class Matrix {
         }
     }
     /** 
-     * A <code>aktualisMatrix</code>-ban az egymás mellett lévő
+     * Az <code>aktualisMatrix</code>-ban az egymás mellett lévő
      * azonos elemeket összeadja.
      * <p>
      * Az összeadás során a kisebb sorindexű elem helyére kerül
@@ -138,7 +138,7 @@ public class Matrix {
     }
     
    /**
-    * A <code>aktualisMatrix</code>-on a matematikai transzponáció
+    * Az <code>aktualisMatrix</code>-on a matematikai transzponáció
     * hajtódik végre.
     * <p>
     * Azaz, a mátrix transzponálása során, sorainak és oszlopainak
@@ -157,7 +157,7 @@ public class Matrix {
         }
     }
     /**
-     *A <code>aktualisMatrix</code>-t középen elforgatjuk.
+     *Az <code>aktualisMatrix</code>-t középen elforgatjuk.
      *<p>
      * Azaz a mátrix sorait egyenlően szétosztja,
      * és az azonos távolságban lévő elemeit felcseréli.</p>
@@ -175,7 +175,7 @@ public class Matrix {
         }
     }
     /**
-     *A <code>aktualisMatrix</code>-on matematikai forgatást végez.
+     *Az <code>aktualisMatrix</code>-on matematikai forgatást végez.
      *
      *
      * @param aktualisMatrix egy egész számokat tartalmazó mátrix

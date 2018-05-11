@@ -32,7 +32,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+/**
+ *A 2048 játék Main osztálya.
+ */
 public class MainApp extends Application {
     @Override
     public void start(final Stage stage) throws Exception {

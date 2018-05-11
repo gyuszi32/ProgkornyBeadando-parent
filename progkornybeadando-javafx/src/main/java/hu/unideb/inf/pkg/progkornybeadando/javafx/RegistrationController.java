@@ -45,7 +45,10 @@ import hu.unideb.inf.pkg.progkornybeadando.Database.regUserBuilderImpl;
 import hu.unideb.inf.pkg.progkornybeadando.Database.TempXML;
 import hu.unideb.inf.pkg.progkornybeadando.Database.regUserBuilder;
 import org.slf4j.LoggerFactory;
-
+/**
+ *A {@link RegistrationController} felelős a regisztrálásért.
+ * 
+ */
 public class RegistrationController implements Initializable {
     @FXML
     public TextField felhasznalo;

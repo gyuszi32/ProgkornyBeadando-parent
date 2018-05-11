@@ -46,19 +46,47 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+/**
+ *A {@link Database} osztály felelős a database.xml
+ * dokumentum előállításáért.
+ * <p>Ez az osztály tartalmaz az XML feldolgozáshoz szükséges
+ * alapvető metódusokat, mint például az {@link ir} vagy {@link konkatenal}
+ * metódusokat.</p>
+ */
 public class Database{
+    /**
+     *A {@link Database} osztály konstruktora.
+     */
+    public Database() {
+    }
+        /**
+     *A {@link konkatenal} metódus felelős az XML dokumentumok
+     * konkatenálásáért stringek segítségével.
+     * <p>
+     * A metódus az XML dokumentumok megadott target-ja alapján összefésüli a két XML fájlt.
+     * Előbb az adatbázis XML dokumentumát lebontja, majd újjáépíti a másik XML dokumentum alapján.
+     * </p>
+     */
     private static Document konkatenal(String kifejezesek,File... fajlok) {
         try {
             XPathFactory xPathFactory = XPathFactory.newInstance();
             XPath xpath = xPathFactory.newXPath();
-            XPathExpression compiledExpression = xpath.compile(kifejezesek);
-            return konkatenal(compiledExpression, fajlok);
+            XPathExpression sokkifejezes = xpath.compile(kifejezesek);
+            return konkatenal(sokkifejezes, fajlok);
             
         } catch (XPathExpressionException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
   }
+    /**
+     *A {@link konkatenal} metódus felelős az XML dokumentumok
+     * konkatenálásáért,XPathExpression segítségével.
+     * <p>
+     * A metódus az XML dokumentumok megadott target-ja alapján összefésüli a két XML fájlt.
+     * Előbb az adatbázis XML dokumentumát lebontja, majd újjáépíti a másik XML dokumentum alapján.
+     * </p>
+     */
     private static Document konkatenal(XPathExpression kifejezesek,File... fajlok) {
         try {
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -85,6 +113,9 @@ public class Database{
         }
         return null;
         }
+    /**
+     *Az {@link ir} metódus hozza létre a database.xml-t.
+     */
     private static void ir(Document doc) {
         try {
             File fájl = new File("target/classes/xml/database.xml");
@@ -100,6 +131,9 @@ public class Database{
         }
         
     }  
+    /**
+    *A {@link konkatenalXML} metódusban történik a végső database.xml előállítása. 
+    */
     public static void konkatenalXML() {
         File fajl1 = new File("target/classes/xml/seged.xml");
         File fajl2 = new File("target/classes/xml/database.xml");
