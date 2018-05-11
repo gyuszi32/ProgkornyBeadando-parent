@@ -5,7 +5,7 @@
     <artifactId>ProgkornyBeadando-parent</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    
+    <inceptionYear>2018</inceptionYear>
     
     
     <organization>
@@ -26,20 +26,21 @@
     </properties>
      
     <scm>
-        <connection>scm:git:</connection>
-        <developerConnection>scm:git:</developerConnection>
-        <url></url>
-        <tag>master</tag>
+        <connection>scm:git:github.com:gyuszi32/ProgkornyBeadando-parent.git</connection>
+        <developerConnection>scm:git:github.com:gyuszi32/ProgkornyBeadando-parent.git</developerConnection>
+        <url>https://github.com/gyuszi32/ProgkornyBeadando-parent</url>
+        <tag>HEAD</tag>
     </scm>
      
     <licenses>
         <license>
-            <name></name>
-            <url></url>
+            <name>GNU General Public License (GPL) version 1.0</name>
+            <url>https://www.gnu.org/licenses/gpl-1.0.en.html</url>
         </license>
     </licenses>
     
     <description>Egy JavaFX applikációval impelemtált 2048 játék.</description> 
+    <url>https://github.com/gyuszi32/ProgkornyBeadando-parent/tree/master/</url>
     
     <distributionManagement>
         <site>
