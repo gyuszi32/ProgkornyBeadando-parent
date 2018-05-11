@@ -1,2 +1,35 @@
-# ProgkornyBeadando-parent
+
+[![Oracle JDK 1.8](https://img.shields.io/badge/JDK-1.8-blue.svg?style=plastic)](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+2048
+====
+A klasszikus 2048 játék.
+
+Verzió
+------
+##### 1.0
+
+Leírás
+------
 A Programozási környezetek tárgyra készített többmodulos 2048 JavaFX-s projekt, melynek motorját a matematikai eszközök segítségével készítettem el.
+
+Jellemzők
+---------
+  - Többmodulos projekt
+  - XML feldolgozás
+  - JUnit teszt
+  - JavaFX
+  - Dokumentáció
+  
+Modulok
+-------
+ - progkornybeadando-database
+ - progkornybeadando-javafx
+ - progkornybeadano-model
+
+Telepítés
+---------
+ Clone the source, then :
+ ````
+ mvn package install
+ mvn exec:java -Dexec.mainClass="hu.unideb.inf.pkg.progkornybeadando.javafx.MainApp"
