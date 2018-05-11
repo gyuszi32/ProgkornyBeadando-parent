@@ -29,7 +29,11 @@ Modulok
 
 Telepítés
 ---------
- Clone the source, then :
+ A főmodulban  :
  ````
  mvn package install
+ ````
+ A progkornybeadando-javafx modulban:
+  ````
  mvn exec:java -Dexec.mainClass="hu.unideb.inf.pkg.progkornybeadando.javafx.MainApp"
+ ````
