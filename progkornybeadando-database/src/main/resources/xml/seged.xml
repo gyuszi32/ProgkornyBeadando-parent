@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Projekt>
+    <Adatok>
+        <Felhasznalok>
+            <Felhasznalo id="minta0">
+                <Jelszo>minta</Jelszo>
+                <Jelszo2>minta</Jelszo2>
+                <Kar>IK</Kar>
+                <Szak>PTI</Szak>
+                <Evfolyam>2</Evfolyam>
+            </Felhasznalo>
+        </Felhasznalok>
+    </Adatok>
+</Projekt>

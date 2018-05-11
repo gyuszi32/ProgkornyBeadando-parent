@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Ha a scan attribútum értékét "true"-ra módosítjuk, akkor a Logback
+	percenként ellenőrzi, hogy változott-e a konfigurációs állomány.
+	Változás esetén megfelelően igazítja hozzá a beállításokat. Az állomány
+	így akár futásidőben is módosítható.
+-->
+<configuration scan="false" debug="false">
+
+<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+</contextListener>
+
+<!-- To enable JMX Management -->
+<jmxConfigurator/>
+
+<appender name="console-info" class="ch.qos.logback.core.ConsoleAppender">
+   <filter class="ch.qos.logback.classic.filter.LevelFilter">
+     <level>INFO</level>
+     <onMatch>ACCEPT</onMatch>
+     <onMismatch>DENY</onMismatch>
+  </filter>
+  <encoder>
+        <pattern>%-4relative [%thread] %boldBlue(%.-5level) %logger{35} - %green(%msg) %n</pattern>
+  </encoder>
+</appender>  
+
+<appender name="console-warning" class="ch.qos.logback.core.ConsoleAppender">
+  <filter class="ch.qos.logback.classic.filter.LevelFilter">
+     <level>WARN</level>
+     <onMatch>ACCEPT</onMatch>
+     <onMismatch>DENY</onMismatch>
+  </filter>
+  <encoder>
+      <pattern>[%d{ddMMMyyyy HH:mm:ss.SS}] %red(%.-5level) %logger{45} - %green(%msg) %n</pattern>
+  </encoder>
+</appender>
+
+
+<root level="info">
+    <appender-ref ref="console-info"/>
+</root>
+<root level="warning">
+    <appender-ref ref="console-warning"/>
+</root>
+
+</configuration>

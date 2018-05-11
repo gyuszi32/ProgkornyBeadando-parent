@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>hu.unideb.inf.pkg</groupId>
+    <artifactId>ProgkornyBeadando-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    
+    
+    
+    <organization>
+        <name>Debreceni Egyetem, Informatika Kar</name>
+    </organization>
+    
+    <modules>
+        <module>progkornybeadando-database</module>
+        <module>progkornybeadando-javafx</module>
+        <module>progkornybeadando-model</module>
+    </modules>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <license.licenseName></license.licenseName>
+    </properties>
+     
+    <scm>
+        <connection>scm:git:</connection>
+        <developerConnection>scm:git:</developerConnection>
+        <url></url>
+        <tag>master</tag>
+    </scm>
+     
+    <licenses>
+        <license>
+            <name></name>
+            <url></url>
+        </license>
+    </licenses>
+    
+    <description>Egy JavaFX applikációval impelemtált 2048 játék.</description> 
+    
+    <distributionManagement>
+        <site>
+            <id>${project.artifactId}-site</id>
+            <url>${project.baseUri}</url>
+        </site>
+    </distributionManagement>
+     
+    <developers>
+        <developer>
+            <id>gyuszi32</id>
+            <name>Juhász Gyula</name>
+            <email>gjula.juhasz@windowslive.com</email>
+            <organization>Debreceni Egyetem, Informatika Kar</organization>
+            <organizationUrl>http://www.inf.unideb.hu/</organizationUrl>
+        </developer>
+    </developers>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.25</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                    <executions>
+                        <execution>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireJavaVersion>
+                                        <version>[1.7,)</version>
+                                        <message>JDK 1.7.x or higher required.</message>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>        
+        </pluginManagement>
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <configuration>
+                    <show>public</show>
+                    <quiet>true</quiet>
+                </configuration>
+                
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.21.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+
+        </plugins>
+    </reporting>
+</project>

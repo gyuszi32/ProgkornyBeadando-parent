@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="300.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.pkg.progkornybeadando.javafx.RegistrationOKController">
+   <children>
+      <StackPane layoutX="14.0" layoutY="55.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Label minWidth="50.0" prefHeight="59.0" prefWidth="272.0" text="Köszönjük a regisztrációját. Most már be tud jelentkezni!" textAlignment="CENTER" textFill="RED" underline="true" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane layoutX="21.0" layoutY="126.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="120.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#bejelentkezes" text="Bejelentkezés" />
+         </children>
+      </StackPane>
+      <StackPane layoutX="176.0" layoutY="126.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="120.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#kilepes" text="Kilépés" />
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
