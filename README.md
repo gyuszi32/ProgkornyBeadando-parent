@@ -1,7 +1,7 @@
 
 [![Oracle JDK 1.8](https://img.shields.io/badge/JDK-1.8-blue.svg?style=plastic)](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-2048
+ProgkornyBeadando-parent
 ====
 A klasszikus 2048 játék.
 
