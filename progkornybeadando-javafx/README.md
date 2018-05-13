@@ -12,3 +12,7 @@ Verzió
 Leírás
 ------
 Ebben a modulban található a 2048 összes Controller osztálya.
+
+Licensz
+-------
+GNU General Public License (GPL) version 1.0
