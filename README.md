@@ -3,8 +3,7 @@
 
 ProgkornyBeadando-parent
 ====
-A klasszikus 2048 játék adoptálása. A játék lényege, hogy 4x4-es mátrixban kell a számokat úgy tologatni, hogy végül kijöjjön 
-a kettő hatványaiból a 2048.
+A klasszikus 2048 játék implementálása. A játék lényege, hogy 4x4-es mátrixban kell a számokat úgy tologatni, hogy végül kijöjjön a kettő hatványaiból a 2048.
 
 Verzió
 ------
