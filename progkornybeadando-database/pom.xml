@@ -13,7 +13,7 @@
 
     <name>progkornybeadando-database</name>
 
-    <description>A module containing the game's database.</description> 
+    <description>A module containing the 2048 game's database.</description> 
     <url>https://github.com/gyuszi32/ProgkornyBeadando-parent/tree/master/</url>
 
     <dependencies>
