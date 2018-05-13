@@ -153,7 +153,7 @@ public class Database {
             t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             t.transform(forras, eredmeny);
             jarkeszites(seged.getAbsolutePath());
-            seged.delete();
+            seged.deleteOnExit();
         } catch (TransformerConfigurationException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
@@ -211,8 +211,10 @@ public class Database {
             if ("classes".equals(classes)) {
                 String ujvmi = vmi.substring(0, vmi.length() - 8);
                 tempjarName = ujvmi + "progkornybeadando-javafx-1.0.jar";
+                System.out.println(ujvmi);
             } else {
                 tempjarName = vmi;
+                System.out.println(tempjarName);
             }
             String jarName = tempjarName;
             String fileName = parameter;
