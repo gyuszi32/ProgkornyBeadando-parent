@@ -38,3 +38,8 @@ Telepítés
   ````
  mvn exec:java -Dexec.mainClass="hu.unideb.inf.pkg.progkornybeadando.javafx.MainApp"
  ````
+ 
+Licensz
+-------
+
+GNU General Public License (GPL) version 1.0
