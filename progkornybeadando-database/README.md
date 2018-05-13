@@ -12,3 +12,7 @@ Verzió
 Leírás
 ------
 Ebben a modulban történik az XML alapú adatbázis feldolgozása.
+
+Licensz
+-------
+GNU General Public License (GPL) version 1.0
