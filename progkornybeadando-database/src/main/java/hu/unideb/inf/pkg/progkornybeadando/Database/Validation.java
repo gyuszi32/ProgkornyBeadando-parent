@@ -21,128 +21,159 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-
-
-
-import static hu.unideb.inf.pkg.progkornybeadando.Database.Database.konkatenalXML;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.NodeList;
 import static hu.unideb.inf.pkg.progkornybeadando.Database.TempXML.adat;
 
-
 /**
- *A {@link Validation} osztály felelős az érvényes felhasználónevekért,
- * illetve jelszavakért.
+ * A {@link Validation} osztály felelős az érvényes felhasználónevekért, illetve
+ * jelszavakért.
  */
 public class Validation {
-    public static loginUser logadatok;
-    
-    private  TempXML xml=TempXML.getxml();
-    List<String> felhasznalo_nevek=new ArrayList<>();
-    List<String> jelszavak=new ArrayList();
-    List<String> user_nevek=new ArrayList();
-    
     /**
-     *A {@link Validation} osztály konstruktora.
-     * 
+     *Bejelentkezési adatokat tartalmazó objektuma.
+     */
+    public static loginUser logadatok;
+    /**
+     *A Database osztály egy példánya. 
+     */
+    Database database = new Database();
+    /**
+     *A TempXML egy példánya.
+     */
+    private TempXML xml = TempXML.getxml();
+    /**
+     *A felhasználó neveket tartalmazó lista.
+     */
+    List<String> felhasznalo_nevek = new ArrayList<>();
+    /**
+     *A jelszavakat tartalmazó lista.
+     */
+    List<String> jelszavak = new ArrayList();
+    /**
+     *A bejelentkezés során megadott felhasználó nevek listája..
+     */
+    List<String> user_nevek = new ArrayList();
+
+    /**
+     * A {@link Validation} osztály konstruktora.
+     *
      */
     private Validation() {
     }
+    /**
+     *A Validation osztály egyetlen példánya.
+     */
     private static Validation peldany;
+
     /**
      * A {@link getPeldany} visszaadja a Validation példány egyetlen példányát.
      * <p>
      * Skeletont hoztunk létre a felhasználó adatainak megosztására.</p>
+     *
      * @return Egy Validation objektummal tér vissza.
      */
-    public static Validation getPeldany()
-    {
-        if(peldany == null)
+    public static Validation getPeldany() {
+        if (peldany == null) {
             peldany = new Validation();
+        }
         return peldany;
     }
     /**
-     *Az egyetlen Validation objektum.
+     * Az egyetlen Validation objektum.
      */
-    public static Validation peldanyka= Validation.getPeldany();
+    public static Validation peldanyka = Validation.getPeldany();
+
     /**
-     *A bejelentkezéshez szükséges adatokat tudjuk beállítani.
+     * A bejelentkezéshez szükséges adatokat tudjuk beállítani.
+     *
      * @param logadatok egy loginUser objektum
      */
     public void setLogadatok(loginUser logadatok) {
         this.logadatok = logadatok;
     }
-   
-    public boolean hibaVan2=false;
+    /**
+     *A bejelentkezési hibákat jelző változó. 
+     */
+    public boolean hibaVan2 = false;
 
     /**
-     *A hibaVan2 változó lekérdezése történik a metódussal.
+     * A hibaVan2 változó lekérdezése történik a metódussal.
+     *
      * @return Visszaadja a hiba értékét.
      */
     public boolean isHibaVan2() {
         return hibaVan2;
     }
+
     /**
-     *A hibaVan2 változó beállítása történik a metódussal.
+     * A hibaVan2 változó beállítása történik a metódussal.
+     *
      * @param hibaVan2 hibát jelző változó
      */
     public void setHibaVan2(boolean hibaVan2) {
         this.hibaVan2 = hibaVan2;
     }
+
     /**
-     *A regisztráció érvényességét jelző metódus.
-     * <p>A {@link valid_reg} metódus biztosítja számunkra, hogy
-     * nem az XML dokumentumban összeférhetetlenségek történjenek.Egy felhasználó név
-     * egyediségét és hosszát, a jelszavak megegyezését és hosszáért ellenőrzi.Ha 
-     * ezek közül valamelyik nem teljesül, akkor egy változó segítségével kommunikál a kontrollerrel.
-     * Ha sikeres volt az ellenőrzés, akkor létrejön egy segéd XML és létrejön az adatbázis. 
+     * A regisztráció érvényességét jelző metódus.
+     * <p>
+     * A {@link valid_reg} metódus biztosítja számunkra, hogy nem az XML
+     * dokumentumban összeférhetetlenségek történjenek.Egy felhasználó név
+     * egyediségét és hosszát, a jelszavak megegyezését és hosszáért
+     * ellenőrzi.Ha ezek közül valamelyik nem teljesül, akkor egy változó
+     * segítségével kommunikál a kontrollerrel. Ha sikeres volt az ellenőrzés,
+     * akkor létrejön egy segéd XML és létrejön az adatbázis.
      * </p>
+     *
      * @param n1 az XML dokumentum egy csomópontja
      */
-    public void valid_reg(NodeList n1){       
-        for(int i = 0; i< n1.getLength();i++){
+    public void valid_reg(NodeList n1) {
+        for (int i = 0; i < n1.getLength(); i++) {
             String felhasznalo_id = n1.item(i).getAttributes().getNamedItem("id").getNodeValue();
             felhasznalo_nevek.add(felhasznalo_id);
-            if(felhasznalo_nevek.get(i).equals(adat.getUserfield())){
-                xml.setHibaVan(true);
-            }
         }
-        if(adat.getUserfield().length()<5 || adat.getPasswordfield().length()<5 ){
+        if (felhasznalo_nevek.contains(adat.getUserfield())) {
             xml.setHibaVan(true);
-        }else{
-            if(adat.getPasswordfield().equals(adat.getPasswordfield2()) && xml.isHibaVan()==false){
+        }
+
+        if (adat.getUserfield().length() < 5 || adat.getPasswordfield().length() < 5) {
+            xml.setHibaVan(true);
+        } else {
+            if (adat.getPasswordfield().equals(adat.getPasswordfield2()) && xml.isHibaVan() == false) {
                 xml.tempXML();
-                konkatenalXML();
-            }else{
+                database.konkatenalXML();
+            } else {
                 xml.setHibaVan(true);
             }
         }
     }
-    
+
     /**
-     *A {@link valid_log} metódus felelős a bejelentkezés ellenőrzéséért.
+     * A {@link valid_log} metódus felelős a bejelentkezés ellenőrzéséért.
      * <p>
      * Leellenőrzi, hogy az adatbáziban szerepel-e az adott felhasználó, illetve
-     * ha szerepel akkor megegyezik-e a hozzá tartozó jelszava. Ha bármelyik nem sikerül
-     * egy változó segítségével értesíti a kontrollert.
+     * ha szerepel akkor megegyezik-e a hozzá tartozó jelszava. Ha bármelyik nem
+     * sikerül egy változó segítségével értesíti a kontrollert.
      * </p>
-     * @param n1    az XML egy csomópontja
-     * @param n2    az XML egy másik csomópontja
+     *
+     * @param n1 az XML egy csomópontja
+     * @param n2 az XML egy másik csomópontja
      */
-    public void valid_log(NodeList n1,NodeList n2){
-            for(int i = 0; i< n1.getLength();i++){
+    public void valid_log(NodeList n1, NodeList n2) {
+        for (int i = 0; i < n1.getLength(); i++) {
             jelszavak.add(n1.item(i).getTextContent());
             String fel_id = n2.item(i).getAttributes().getNamedItem("id").getNodeValue();
             user_nevek.add(fel_id);
-            if(user_nevek.get(i).equals(logadatok.getLogUser()) && jelszavak.get(i).equals(logadatok.getLogPassword())){
-                hibaVan2=false;            
+            if (user_nevek.get(i).equals(logadatok.getLogUser()) && jelszavak.get(i).equals(logadatok.getLogPassword())) {
+                hibaVan2 = false;
                 break;
-            }else{
-                hibaVan2=true;
+            } else {
+                hibaVan2 = true;
             }
-          
+
         }
     }
-      
+
 }

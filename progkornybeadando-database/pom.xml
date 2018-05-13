@@ -13,6 +13,9 @@
 
     <name>progkornybeadando-database</name>
 
+    <description>A module containing the game's database.</description> 
+    <url>https://github.com/gyuszi32/ProgkornyBeadando-parent/tree/master/</url>
+
     <dependencies>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -37,6 +40,25 @@
         </dependency>
     </dependencies>
     
-    
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <configLocation>${basedir}/src/main/resources/checkstyle/checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <configLocation>${basedir}/src/main/resources/checkstyle/checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

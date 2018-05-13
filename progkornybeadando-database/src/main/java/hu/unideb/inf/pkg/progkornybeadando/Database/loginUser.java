@@ -34,7 +34,13 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  * <p>Tartalmazza a felhasználó bejelentkezéshez beírt nevét és jelszavát.</p>
  */
 public class loginUser {
+    /**
+     *A felhasználó bejelentkezési neve.
+     */
     private String logUser;
+    /**
+     *A felhasználó bejelentkezési jelszava.
+     */
     private String logPassword;
     /**
      *A {@link loginUser} osztály konstruktora.

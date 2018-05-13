@@ -25,12 +25,12 @@
             <Label text="Felhasználónév  " textFill="RED" />
          </children>
       </StackPane>
-      <StackPane layoutX="93.0" layoutY="229.0" AnchorPane.bottomAnchor="230.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="200.0">
+      <StackPane layoutX="93.0" layoutY="229.0" prefHeight="64.0" prefWidth="180.0" AnchorPane.bottomAnchor="230.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="200.0">
          <children>
             <Label prefHeight="17.0" prefWidth="58.0" text="Jelszó " textFill="RED" />
          </children>
       </StackPane>
-      <StackPane layoutX="201.0" layoutY="176.0" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
+      <StackPane layoutX="201.0" layoutY="176.0" prefHeight="64.0" prefWidth="150.0" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
          <children>
             <TextField fx:id="USER" />
          </children>
@@ -40,7 +40,7 @@
             <PasswordField fx:id="PASSWORD" />
          </children>
       </StackPane>
-      <StackPane layoutX="134.0" layoutY="286.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0">
+      <StackPane layoutX="50.0" layoutY="274.0" prefHeight="76.0" prefWidth="300.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="280.0">
          <children>
             <Button mnemonicParsing="false" onAction="#bejelentkezes" text="Bejelentkezés" />
          </children>

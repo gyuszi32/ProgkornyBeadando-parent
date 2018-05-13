@@ -33,7 +33,9 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  * során létrejövő adatok lekérdezéseit és beállításait.
  */
 public class loginUserBuilderImpl implements loginUserBuilder{
-    
+    /**
+     *Egy loginUser objektum.
+     */
     private loginUser userke;
     /**
      *Az {@link loginUserBuilder} konstruktora.

@@ -27,6 +27,9 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  * során létrejövő adatok lekérdezéseit és beállításait.
  */
 public class regUserBuilderImpl implements regUserBuilder {
+    /**
+     *A regUser egy pédánya.
+     */
     private regUser alapocska;
     /**
      *A {@link regUserBuilderImpl} osztály konstruktora.

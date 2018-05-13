@@ -45,8 +45,8 @@ import hu.unideb.inf.pkg.progkornybeadando.Database.Validation;
 import hu.unideb.inf.pkg.progkornybeadando.Database.loginUser;
 import hu.unideb.inf.pkg.progkornybeadando.Database.loginUserBuilder;
 import hu.unideb.inf.pkg.progkornybeadando.Database.loginUserBuilderImpl;
-import javax.xml.parsers.ParserConfigurationException;
 import org.slf4j.LoggerFactory;
+import org.xml.sax.SAXException;
 /**
  * A {@link LoginController} felelős a bejelentkezésért.
  */

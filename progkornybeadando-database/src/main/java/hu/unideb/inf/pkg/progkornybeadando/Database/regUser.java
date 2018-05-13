@@ -35,12 +35,29 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  * az egyetemi karát, az egyetemi szakját, és az évfolyamát.</p>
  */
 public class regUser {
-    
+    /**
+     *A felhasználó neve.
+     */
     private String userfield;
+    /**
+     *A felhasználó jelszava.
+     */
     private String passwordfield;
+    /**
+     *A felhasználó megerősítő jelszava.
+     */
     private String passwordfield2;
+    /**
+     *A felhasználó egyetemi karja.
+     */
     private String karfield;
+    /**
+     *A felhasználó egyetemi szak.
+     */
     private String szakfield;
+    /**
+    *A felhasználó évfolyama.
+    */
     private String evfield;
     /**
      *A {@link regUser} osztály konstruktora.

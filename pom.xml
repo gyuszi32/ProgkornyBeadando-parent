@@ -10,6 +10,7 @@
     
     <organization>
         <name>Debreceni Egyetem, Informatika Kar</name>
+        <url>http://www.inf.unideb.hu/</url>
     </organization>
     
     <modules>
@@ -23,6 +24,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <license.licenseName>gpl_v1</license.licenseName>
+        <mainClass>hu.unideb.inf.pkg.progkornybeadando.javafx.MainApp</mainClass>
     </properties>
      
     <scm>
@@ -39,7 +41,7 @@
         </license>
     </licenses>
     
-    <description>Egy JavaFX applikációval impelemtált 2048 játék.</description> 
+    <description>A JavaFX application for 2048 games.</description> 
     <url>https://github.com/gyuszi32/ProgkornyBeadando-parent/tree/master/</url>
     
     <distributionManagement>
@@ -99,9 +101,31 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+
+            <!-- A fordítás közben a '...uses unchecked or unsafe operations' üzenetek okait is lássuk -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
             </plugins>        
         </pluginManagement>
     </build>
+    
     <reporting>
         <plugins>
             <plugin>
@@ -111,8 +135,29 @@
                 <configuration>
                     <show>public</show>
                     <quiet>true</quiet>
+                </configuration>                
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
+
+            <!-- Java forrás XRef -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <linkJavadoc>true</linkJavadoc>
+                    <show>private</show>
                 </configuration>
-                
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -121,10 +166,12 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.5</version>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.17</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                </configuration>
             </plugin>
-
         </plugins>
     </reporting>
 </project>

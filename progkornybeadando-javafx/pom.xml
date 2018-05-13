@@ -20,6 +20,8 @@
         <mainClass>hu.unideb.inf.pkg.progkornybeadando.javafx.MainApp</mainClass>
     </properties>
 
+    <description>The JavaFX part of the game module.</description> 
+    <url>https://github.com/gyuszi32/ProgkornyBeadando-parent/tree/master/</url>
     
     <dependencies>
         <dependency>
@@ -169,5 +171,16 @@
             </plugin>
         </plugins>
     </build>
-
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <configLocation>${basedir}/src/main/resources/checkstyle/checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

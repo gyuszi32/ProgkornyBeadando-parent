@@ -54,6 +54,9 @@ public class MainApp extends Application {
         });
         stage.show();
         }
+    /**
+     *A Main osztály main metódusa.
+     */
     public static void main(String[] args) {
         launch(args);
     }

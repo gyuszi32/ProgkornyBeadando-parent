@@ -37,7 +37,9 @@ public class Matrix {
      **/
     public Matrix() {
     }
-    
+    /**
+     * A {@link Matrix} osztály loggere.
+     */
     private static final Logger logom = LoggerFactory.getLogger(Matrix.class);
     
      /**
