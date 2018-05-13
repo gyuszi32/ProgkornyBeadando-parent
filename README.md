@@ -11,7 +11,7 @@ Verzió
 
 Leírás
 ------
-A Programozási környezetek tárgyra készített többmodulos 2048 JavaFX-s projekt, melynek motorját a matematikai eszközök segítségével készítettem el.
+A Programozási környezetek tárgyra készített többmodulos 2048 JavaFX-s projekt, melynek motorját matematikai eszközök segítségével készítettem el.
 
 Jellemzők
 ---------
