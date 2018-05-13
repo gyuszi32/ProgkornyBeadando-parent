@@ -37,7 +37,14 @@ Telepítés
   ````
  mvn exec:java -Dexec.mainClass="hu.unideb.inf.pkg.progkornybeadando.javafx.MainApp"
  ````
- 
+ Tesztek lekérdezése főmodulból:
+ ````
+ mvn surefire-report:report -Daggregate=true
+ ````
+ Site legenerálása többmodul esetén:
+ ````
+ mvn site site:stage jxr:jxr
+ ````
 Licensz
 -------
 
