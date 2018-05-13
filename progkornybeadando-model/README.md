@@ -12,3 +12,7 @@ Verzió
 Leírás
 ------
 Ebben a modulban található a mátrixokkal reprezentált 2048 játék motorja.
+
+Licensz
+-------
+GNU General Public License (GPL) version 1.0
