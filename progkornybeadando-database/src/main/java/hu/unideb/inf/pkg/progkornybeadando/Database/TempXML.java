@@ -231,7 +231,7 @@ public class TempXML {
             doc.getDocumentElement().normalize();
             NodeList n1 = doc.getElementsByTagName("Felhasznalo");
             peldanyka.valid_reg(n1);
-            logom.info("Felhasználónév és jelszó ellenőrzése.");
+            logom.info("Minden rendben!");
         } catch (ParserConfigurationException | SAXException | IOException ex) {
             Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
             
