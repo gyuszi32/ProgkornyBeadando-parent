@@ -61,6 +61,23 @@
         </developer>
     </developers>
     
+    <profiles>
+        <profile>
+            <id>logback</id>
+            <dependencies>
+                <dependency>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                    <version>1.2.3</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -94,7 +111,7 @@
                                 <rules>
                                     <requireJavaVersion>
                                         <version>[1.7,)</version>
-                                        <message>JDK 1.7.x or higher required.</message>
+                                        <message>JDK 1.7.x vagy nagyobb verzio szukseges.</message>
                                     </requireJavaVersion>
                                 </rules>
                             </configuration>
@@ -102,26 +119,26 @@
                     </executions>
                 </plugin>
                 <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
 
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-            </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
 
-            <!-- A fordítás közben a '...uses unchecked or unsafe operations' üzenetek okait is lássuk -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <compilerArgs>
-                        <arg>-Xlint:all</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
+                <!-- A fordítás közben a '...uses unchecked or unsafe operations' üzenetek okait is lássuk -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <compilerArgs>
+                            <arg>-Xlint:all</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
             </plugins>        
         </pluginManagement>
     </build>

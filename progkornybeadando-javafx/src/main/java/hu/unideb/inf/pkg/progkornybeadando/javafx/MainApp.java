@@ -56,6 +56,7 @@ public class MainApp extends Application {
         }
     /**
      *A Main osztály main metódusa.
+     *@param args argumentumok
      */
     public static void main(String[] args) {
         launch(args);

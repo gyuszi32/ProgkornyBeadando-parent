@@ -21,19 +21,10 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.jar.JarOutputStream;
-import java.util.jar.Manifest;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -51,6 +42,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
@@ -65,10 +57,18 @@ public class Database {
 
     /**
      * A {@link Database} osztály konstruktora.
+     * <p>
+     * Itt történik annak ellenőrzése, hogy létezik-e az adott mappa,
+     * illetve az adott fájl.
+     * </p>
      */
     public Database() {
+        FileManagement.ellenorzes();
     }
-
+    /**
+     *A logolást segítő példány.
+     */
+    private static final org.slf4j.Logger logom = LoggerFactory.getLogger(Database.class);
     /**
      * A {@link konkatenal} metódus felelős az XML dokumentumok konkatenálásáért
      * stringek segítségével.
@@ -152,8 +152,9 @@ public class Database {
             t.setOutputProperty(OutputKeys.INDENT, "yes");
             t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             t.transform(forras, eredmeny);
-            jarkeszites(seged.getAbsolutePath());
-            seged.delete();
+            FileManagement.mentes(seged, "database.xml");
+            seged.deleteOnExit();
+            logom.info("Sikeres felhasználó és jelszó mentés.");
         } catch (TransformerConfigurationException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
@@ -173,8 +174,9 @@ public class Database {
     public void konkatenalXML() {
         try {
             FileOutputStream out2;
-            InputStream in2 = getXMLjar();
+            //InputStream in2 = getXMLjar();
             //InputStream in2 = getClass().getClassLoader().getResourceAsStream("xml/database.xml");
+            InputStream in2=FileManagement.betoltes("database.xml");
             File fajl2 = File.createTempFile("vmi1", ".xml");
             fajl2.deleteOnExit();
             out2 = new FileOutputStream(fajl2);
@@ -187,156 +189,9 @@ public class Database {
             out2.close();
             Document doc = konkatenal("/Projekt/Adatok/Felhasznalok", TempXML.xmlke.segedfajl, fajl2);
             ir(doc);
+            logom.debug("Felhasználó elkészült.");
         } catch (IOException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /**
-     * A metódus futtatási időben felülírja a jar fájlt.
-     * <p>
-     * Ahhoz, hogy a regisztráció kontroller és a login kontroller megfelelően
-     * működjön, futtatási időben kell módosítani a jar fájlt. Ezt legkönnyebben
-     * a régi jar felülírásával történhet.</p>
-     *
-     * @param parameter az új fájlt elérése
-     */
-    public void jarkeszites(String parameter) {
-        try {
-            //String jarName = "/home/tzk/NetBeansProjects/ProgkornyBeadando-parent/progkornybeadando-javafx/target/progkornybeadando-javafx-1.0.jar";
-            //System.out.println(jarName);
-            String vmi = TempXML.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-            String classes = vmi.substring(vmi.length() - 8, vmi.length() - 1);
-            String tempjarName;
-            if ("classes".equals(classes)) {
-                String ujvmi = vmi.substring(0, vmi.length() - 8);
-                tempjarName = ujvmi + "progkornybeadando-javafx-1.0.jar";
-            } else {
-                tempjarName = vmi;
-            }
-            String jarName = tempjarName;
-            String fileName = parameter;
-            File jarFile = new File(jarName);
-            File tempJarFile = new File(jarName + ".tmp");
-            JarFile jar = new JarFile(jarFile);
-
-            boolean jarUpdated = false;
-
-            try {
-                Manifest jarManifest = jar.getManifest();
-                JarOutputStream tempJar = new JarOutputStream(new FileOutputStream(tempJarFile));
-
-                byte[] buffer = new byte[1024];
-                int bytesRead;
-                try {
-                    FileInputStream file = new FileInputStream(fileName);
-                    try {
-                        JarEntry entry = new JarEntry("xml/database.xml");
-                        tempJar.putNextEntry(entry);
-                        while ((bytesRead = file.read(buffer)) != -1) {
-                            tempJar.write(buffer, 0, bytesRead);
-                        }
-                    } finally {
-                        file.close();
-                    }
-                    for (Enumeration entries = jar.entries(); entries.hasMoreElements();) {
-                        JarEntry entry = (JarEntry) entries.nextElement();
-                        if (!entry.getName().equals("xml/database.xml")) {
-
-                            InputStream entryStream = jar.getInputStream(entry);
-                            tempJar.putNextEntry(entry);
-
-                            while ((bytesRead = entryStream.read(buffer)) != -1) {
-                                tempJar.write(buffer, 0, bytesRead);
-                            }
-                        }
-                    }
-
-                    jarUpdated = true;
-                } catch (IOException ex) {
-                    tempJar.putNextEntry(new JarEntry("stub"));
-                } finally {
-                    tempJar.close();
-                }
-            } finally {
-                jar.close();
-                if (!jarUpdated) {
-                    tempJarFile.delete();
-                }
-            }
-            if (jarUpdated) {
-                jarFile.delete();
-                tempJarFile.renameTo(jarFile);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    /**
-     * Az aktuális jar fájl beállításait kérdezi le az xml/database.xml fájlhoz.
-     *
-     * <p>
-     * A metódus megvizsgálja a jarban található összes directoryt, majd ha
-     * megegyezőt talált az xml/database.xml-el akkor mélymásolással egy
-     * InputStreamként kezeli.</p>
-     * @return Visszaadja a módosított jart.
-     */
-    private InputStream getXMLjar() {
-        InputStream result = null;
-        try {
-            String vmi = TempXML.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-            String classes = vmi.substring(vmi.length() - 8, vmi.length() - 1);
-            String tempjarName;
-            if ("classes".equals(classes)) {
-                String ujvmi = vmi.substring(0, vmi.length() - 8);
-                tempjarName = ujvmi + "progkornybeadando-javafx-1.0.jar";
-            } else {
-                tempjarName = vmi;
-            }
-            String jarName = tempjarName;
-            File jarFile = new File(jarName);
-            JarFile jar = new JarFile(jarFile);
-            for (Enumeration entries = jar.entries(); entries.hasMoreElements();) {
-                JarEntry entry = (JarEntry) entries.nextElement();
-                if (entry.getName().equals("xml/database.xml")) {
-                    // Get an input stream for the entry.
-                    result = clone(jar.getInputStream(entry));
-                }
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
-
-    /**
-     * A {@link clone} metódus valósítja meg a másolást.
-     * <p>
-     * A metódus Inputstreamet vár bemenetként, amit mélymásolás segítségével
-     * egy ByteArrayInputStreambe másol. Magyarul mélymásolás történik.</p>
-     *
-     * @param input egy InputStream objektum
-     * @return Visszaad egy InputSteam objektumot.
-     */
-    private static InputStream clone(InputStream input) {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = input.read(buffer)) > -1) {
-                baos.write(buffer, 0, len);
-            }
-            baos.flush();
-
-            InputStream is1 = new ByteArrayInputStream(baos.toByteArray());
-            return is1;
-        } catch (IOException ex) {
-            Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
 }

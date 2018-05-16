@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hu.unideb.inf.pkg.progkornybeadando.Database;
 
 /*-
@@ -27,18 +22,12 @@ package hu.unideb.inf.pkg.progkornybeadando.Database;
  * #L%
  */
 import static hu.unideb.inf.pkg.progkornybeadando.Database.Validation.peldanyka;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -50,6 +39,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -66,11 +56,18 @@ import org.xml.sax.SAXException;
  * számára nélkülözhetetlen segéd XML-t.</p>
  */
 public class TempXML {
-
+    /**
+     *A logolást segítő példány.
+     */
+    private static final org.slf4j.Logger logom = LoggerFactory.getLogger(TempXML.class);
     /**
      * A TempXML osztály konstruktora.
+     * <p>Itt történik az ellenőrzése, hogy létezike-e ilyen mappa,
+     * illetve, hogy létezik-e az adott fájl.</p>
+     * 
      */
-    TempXML() {
+    private TempXML() {
+        FileManagement.ellenorzes();
     }
     /**
      *A TempXML osztály egyetlen pédánya.
@@ -137,7 +134,7 @@ public class TempXML {
         this.adat = adat;
     }
     /**
-    * A seged.xml tartalmat tartalmazó fájl.
+    * A seged.xml tartalmát tartalmazó fájl.
     */
     public File segedfajl;
     /**
@@ -204,13 +201,13 @@ public class TempXML {
             in.close();
             out.flush();
             out.close();
-
-            //StreamResult eredmeny = new StreamResult(new File("target/classes/xml/seged.xml"));
+            
             StreamResult eredmeny = new StreamResult(tempFile);
             t.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             t.setOutputProperty(OutputKeys.INDENT, "yes");
             t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             t.transform(forras, eredmeny);
+            logom.info("SegédXML elkészítése.");
         } catch (TransformerException | ParserConfigurationException | IOException ex) {
             Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -229,14 +226,15 @@ public class TempXML {
             hibaVan = false;
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            InputStream in = getXMLjar();
-            //InputStream in = getClass().getClassLoader().getResourceAsStream("xml/database.xml");
+            InputStream in = FileManagement.betoltes("database.xml");
             Document doc = db.parse(in);
             doc.getDocumentElement().normalize();
             NodeList n1 = doc.getElementsByTagName("Felhasznalo");
             peldanyka.valid_reg(n1);
+            logom.info("Felhasználónév és jelszó ellenőrzése.");
         } catch (ParserConfigurationException | SAXException | IOException ex) {
             Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
 
     }
@@ -251,79 +249,15 @@ public class TempXML {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            InputStream in = getXMLjar();
-            //InputStream in = getClass().getClassLoader().getResourceAsStream("xml/database.xml");
-            // File bement=new File("target/classes/xml/database.xml");
+            InputStream in =FileManagement.betoltes("database.xml");
             Document doc = db.parse(in);
             doc.getDocumentElement().normalize();
             NodeList n1 = doc.getElementsByTagName("Jelszo");
             NodeList n2 = doc.getElementsByTagName("Felhasznalo");
             peldanyka.valid_log(n1, n2);
+            logom.info("Felhasználónév és jelszó ellenőrzése.");
         } catch (ParserConfigurationException | SAXException | IOException ex) {
             Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-   
-    /**
-     *Az aktuális jar fájl beállításait kérdezi le az xml/database.xml fájlhoz.
-     * 
-     * <p>A metódus megvizsgálja a jarban található összes directoryt, majd
-     * ha megegyezőt talált az xml/database.xml-el akkor mélymásolással egy 
-     * InputStreamként kezeli.</p>
-     * @return Visszadja legfrissebb jar fájlt.
-     */
-    private InputStream getXMLjar() {
-        InputStream result = null;
-        try {
-            String vmi=TempXML.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-            String classes = vmi.substring(vmi.length()-8,vmi.length()-1);
-            String tempjarName;
-            if("classes".equals(classes)){
-                String ujvmi=vmi.substring(0,vmi.length()-8);
-                tempjarName=ujvmi+"progkornybeadando-javafx-1.0.jar";
-            }else{
-                tempjarName=vmi;
-            }
-            String jarName=tempjarName;
-            File jarFile = new File(jarName);
-            JarFile jar = new JarFile(jarFile);
-            for (Enumeration entries = jar.entries(); entries.hasMoreElements();) {
-                JarEntry entry = (JarEntry) entries.nextElement();
-                if (entry.getName().equals("xml/database.xml")) {
-                    // Get an input stream for the entry.
-                    result = clone(jar.getInputStream(entry));
-                }
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
-    /**
-     *A {@link clone} metódus valósítja meg a másolást.
-     * <p>A metódus Inputstreamet vár bemenetként, 
-     * amit mélymásolás segítségével egy ByteArrayInputStreambe másol.
-     * Magyarul mélymásolás történik.</p>
-     * @param input objektum
-     * @return Visszaad egy InputStream objektumot.
-     */
-    private static InputStream clone(InputStream input) {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = input.read(buffer)) > -1) {
-                baos.write(buffer, 0, len);
-            }
-            baos.flush();
-
-            InputStream is1 = new ByteArrayInputStream(baos.toByteArray());
-            return is1;
-        } catch (IOException ex) {
-            Logger.getLogger(TempXML.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
 }

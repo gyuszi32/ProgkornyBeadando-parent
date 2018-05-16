@@ -74,14 +74,7 @@ public class RegistrationController implements Initializable {
     public regUser construct(){
                 regUserBuilder builder= new regUserBuilderImpl();
       return builder.setUserfield(felhasznalo.getText()).setPasswordfield(jelszo.getText()).setPasswordfield2(jelszo2.getText()).setKarfield(kar.getText()).setSzakfield(szak.getText()).setEvfield(ev.getText()).build();
-      /* alap seged=new alap();
-       seged.setUserfield(felhasznalo.getText());
-       seged.setPasswordfield(jelszo.getText());
-       seged.setPasswordfield2(jelszo2.getText());
-       seged.setSzakfield(szak.getText());
-       seged.setKarfield(kar.getText());
-       seged.setEvfield(ev.getText());
-       return seged;*/
+
     }
     
     

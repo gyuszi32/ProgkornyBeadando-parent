@@ -50,11 +50,11 @@ public class Validation {
     /**
      *A jelszavakat tartalmazó lista.
      */
-    List<String> jelszavak = new ArrayList();
+    List<String> jelszavak = new ArrayList<>();
     /**
      *A bejelentkezés során megadott felhasználó nevek listája..
      */
-    List<String> user_nevek = new ArrayList();
+    List<String> user_nevek = new ArrayList<>();
 
     /**
      * A {@link Validation} osztály konstruktora.

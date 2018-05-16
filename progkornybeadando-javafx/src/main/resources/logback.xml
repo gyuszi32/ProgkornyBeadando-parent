@@ -21,12 +21,7 @@
   #L%
   -->
 
-<!--
-	Ha a scan attribútum értékét "true"-ra módosítjuk, akkor a Logback
-	percenként ellenőrzi, hogy változott-e a konfigurációs állomány.
-	Változás esetén megfelelően igazítja hozzá a beállításokat. Az állomány
-	így akár futásidőben is módosítható.
--->
+
 <configuration scan="false" debug="false">
 
 <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
@@ -43,6 +38,7 @@
      <onMismatch>DENY</onMismatch>
   </filter>
   <encoder>
+	<charset>UTF-8</charset> 
         <pattern>%-4relative [%thread] %boldBlue(%.-5level) %logger{35} - %green(%msg) %n</pattern>
   </encoder>
 </appender>  
@@ -54,7 +50,8 @@
      <onMismatch>DENY</onMismatch>
   </filter>
   <encoder>
-      <pattern>[%d{ddMMMyyyy HH:mm:ss.SS}] %red(%.-5level) %logger{45} - %green(%msg) %n</pattern>
+	<charset>UTF-8</charset> 
+        <pattern>[%d{ddMMMyyyy HH:mm:ss.SS}] %red(%.-5level) %logger{45} - %green(%msg) %n</pattern>
   </encoder>
 </appender>
 
