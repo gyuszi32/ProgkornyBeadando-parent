@@ -67,16 +67,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
-
-            <!-- Enforcer: Java minimum verzió ellenőrzése.
-            Az enforcer default életciklus kötése a 'validate'
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
-
-            <!-- Fat/Uber JAR gyártása az assembly plugin segítségével -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -100,6 +94,7 @@
                 </executions>
             </plugin>
     </plugins>
+    
     </build>
     <reporting>
         <plugins>
