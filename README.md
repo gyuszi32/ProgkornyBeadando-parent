@@ -31,7 +31,7 @@ Telepítés
 ---------
  A főmodulban  :
  ````
- mvn package install
+ mvn install
  ````
  A progkornybeadando-javafx modulban:
   ````
