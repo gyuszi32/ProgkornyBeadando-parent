@@ -174,8 +174,6 @@ public class Database {
     public void konkatenalXML() {
         try {
             FileOutputStream out2;
-            //InputStream in2 = getXMLjar();
-            //InputStream in2 = getClass().getClassLoader().getResourceAsStream("xml/database.xml");
             InputStream in2=FileManagement.betoltes("database.xml");
             File fajl2 = File.createTempFile("vmi1", ".xml");
             fajl2.deleteOnExit();
